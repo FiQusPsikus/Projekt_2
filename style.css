@@ -1,0 +1,61 @@
+body{
+    text-decoration: none;
+    color:black;
+    font-family: 'Muli', sans-serif;
+
+}
+.top_bar{
+    width:100%;
+    
+    height:50px;
+    line-height: 50px;
+    margin:auto;
+    display:inline-block;
+    font-weight: bold;
+
+}
+.menu{
+    display: inline-block;
+    color:black;
+    margin-left:15px;
+}
+.cart{
+    float:right;
+    margin-right: 10px;
+    text-decoration: none;
+    color:black;
+}
+
+.shop{
+    display: inline-block;
+    position: absolute;
+    left:45%;
+    transition:translate(-50%,-50%);
+    width:100px;
+    text-decoration: none;
+    color:black;
+    font-size:30px;
+}
+.shop1{
+    display: inline-block;
+    position: absolute;
+    left:47%;
+    transition:translate(-50%,-50%);
+    width:100px;
+    text-decoration: none;
+    color:black;
+    font-size:30px;
+}
+
+
+.hello{
+    width:100%;
+    font-size:60px;
+    text-align: center;
+    margin-top:40px;
+}
+
+.under_hello{
+    width:100%;
+    text-align:center;
+}

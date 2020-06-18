@@ -67,20 +67,36 @@
 
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
-                    echo '<div style="border:1px solid black;width:80%;height:70px;margin:auto;line-height:70px;padding-left:50px;"> Zamówienie nr '.$row['id_zamowienia'].'
+                    echo '<div style="border:1px solid black;width:80%;height:70px;margin:auto;line-height:70px;padding-left:50px;">Zamówienie
                    
                     <a href="delete_call.php?id='.$row['id_zamowienia'].'">
-                        <button type="button" class="btn btn-danger float-right" style="margin-right:10px;margin-top:15px;">Usuń zgłoszenie</button>
+                        <button type="button" class="btn btn-danger float-right" style="margin-right:10px;margin-top:15px;">Usuń</button>
                     </a> 
                     <a href="order_into.php?id='.$row['id_zamowienia'].'">
                         <button type="button" class="btn btn-link">Szczegóły</button>
                     </a> 
                     </div><br>';
                 }
-            } else {
-                echo "<div style='text-align:center;height:150px;line-height:170px;'>Brak zamówień...</div>";
-            }
+            } 
+            $sql = "SELECT * FROM zamowienia_hurt";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                    echo '<div style="border:1px solid black;width:80%;height:70px;margin:auto;line-height:70px;padding-left:50px;"> Zamówienie
+                   
+                    <a href="delete_call_mass.php?id='.$row['id_zamowienia'].'">
+                        <button type="button" class="btn btn-danger float-right" style="margin-right:10px;margin-top:15px;">Usuń</button>
+                    </a> 
+                    <a href="order_into_mass.php?id='.$row['id_zamowienia'].'">
+                        <button type="button" class="btn btn-link">Szczegóły</button>
+                    </a> 
+                    </div><br>';
+                }
+            } 
             $conn->close();
+
+
             ?>
 
 

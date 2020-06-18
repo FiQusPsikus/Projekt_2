@@ -65,15 +65,22 @@
         $id=$_GET['id'];
         require_once("../connect.php");
 
-            $sql = "SELECT * FROM zamowienia_detal WHERE id_zamowienia=$id";
+            $sql = "SELECT * FROM zamowienia_detal INNER JOIN produkty ON zamowienia_detal.id_produktu=produkty.id_produktu  WHERE id_zamowienia=$id";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
-                    echo $row['tresc'];
-                    echo '<br>Telefon<br>'.$row['telefon'];
+                    echo $row['Adres'].'<br>';
+                    echo $row['Kod_pocztowy'].'<br>';
+                    echo $row['Miasto'].'<br>';
+                    echo $row['Adresat'].'<br><br>';
+                    echo $row['ilosc'].'x '.$row['nazwa'];
+                
+
                 }
             }
+
+            
         
         
         ?></div>

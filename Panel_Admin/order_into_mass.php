@@ -54,26 +54,51 @@
 
     <body>
         <div class="top_bar">  
-            <a href="../onas.php"><div class="menu" href="#">O Nas</div></a>
-            <a href="../index.php"><div class="menu" href="#">Kontakt</div></a>
-            <a href="INTO.php"><div class="shop1" href="#">Panel</div></a>
-            <a href="../cart.php"><div class="cart" href="#">Koszyk</div></a>
+            <a href="onas.php"><div class="menu" href="#">O Nas</div></a>
+            <a href="index.php"><div class="menu" href="#">Kontakt</div></a>
+            <a href="INTO.php"><div class="shop" href="#">Panel</div></a>
+            <a href="cart.php"><div class="cart" href="#">Koszyk</div></a>
         </div>
-        <?php
-        require_once('../connect.php');
+        <div class="hello">Zamówienie</div>
+        <div class="under_hello" style="font-size:25px;"><?php
         
-            if($_SESSION['user']&&$_SESSION['user']=='admin'){
-             echo'   <div style="width:100%;text-align:center;margin-top:200px;font-size:20px;">
-                    <a href="add_article.php">Zarządzaj artykułami.</a><br>
-                    <a href="show_calls.php">Zgłoszenia.</a><br>
-                    <a href="show_orders.php">Zamówienia.</a><br>
-                    <a href="send_newsletter.php">Wyślij newsletter.</a><br>
-                </div>';
-            }else{
-                echo "Dostęp zabroniony !";
-            }
-        ?>
+        $id=$_GET['id'];
+        require_once("../connect.php");
 
+            $sql = "SELECT * FROM zamowienia_hurt WHERE id_zamowienia=$id";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                    echo $row['Adres'].'<br>';
+                    echo $row['Kod_pocztowy'].'<br>';
+                    echo $row['Miasto'].'<br>';
+                    echo $row['Adresat'].'<br><br>';
+                    
+                    $trig=$dane_osobowe = explode(",", $row['id_produktu']);
+                    
+
+                }
+
+
+
+
+            }
+
+            for($i=0;$i<count($trig)-1;$i++){
+                $lotrig=$trig[$i];
+                $sql = "SELECT * FROM produkty where id_produktu=$lotrig";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        echo $row['nazwa'].'<br>';
+                    }
+                }
+            }
+        
+        
+        
+        ?></div>
 
     </body>
 

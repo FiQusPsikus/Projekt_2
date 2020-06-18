@@ -6,9 +6,11 @@
     $kod=$_POST['kod'];
     $miasto=$_POST['miejscowosc'];
     $id=$_POST['id'];
-    $sql = "INSERT INTO zamowienia_detal(Adres,Kod_pocztowy,Adresat,id_produktu,ilosc) VALUES ('$adres','$kod','$ad',$id,$ilosc)";
+    $sql = "INSERT INTO zamowienia_detal(Adres,Kod_pocztowy,Adresat,Miasto,id_produktu,ilosc) VALUES ('$adres','$kod','$ad','$miasto',$id,$ilosc)";
     $result = $conn->query($sql);
     $conn->close();
+
+   
     
     header("Location: confirm.php");
 
